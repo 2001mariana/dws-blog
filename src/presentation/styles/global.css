@@ -1,0 +1,93 @@
+/* =========================
+   CSS RESET (modern)
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   ROOT VARIABLES
+========================= */
+:root {
+  --color-primary: #1e293b;
+  --color-secondary: #64748b;
+  --color-background: #f8fafc;
+  --color-white: #ffffff;
+
+  --font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  --border-radius: 8px;
+}
+
+/* =========================
+   BASE STYLES
+========================= */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+p {
+  color: var(--color-secondary);
+}
+
+/* =========================
+   LINKS
+========================= */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   BUTTONS (BASE)
+========================= */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* =========================
+   IMAGES
+========================= */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   LAYOUT HELPERS
+========================= */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
