@@ -1,24 +1,31 @@
 import { useParams } from 'react-router-dom';
 import { usePost } from '../../application/hooks/usePost';
-import { usePostContext } from '../../application/hooks/usePostContext';
 
 export const PostDetailPage = () => {
   const { id } = useParams();
 
-  const { selectedPost } = usePostContext();
-
   const { post, isLoading, error } = usePost(id as string);
 
-  const finalPost = selectedPost?.id === id ? selectedPost : post;
-
-  if (isLoading && !finalPost) return <p>Loading...</p>;
-  if (error && !finalPost) return <p>{error}</p>;
-  if (!finalPost) return <p>Post not found</p>;
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+  if (!post) return <p>Post not found</p>;
 
   return (
     <div className="container">
-      <h1>{finalPost.title}</h1>
-      <p>{finalPost.content}</p>
+      <h1>{post.title}</h1>
+
+      <img src={post.thumbnail_url} alt={post.title} />
+
+      <p>{post.content}</p>
+
+      <div>
+        <strong>Author:</strong> {post.author.name}
+      </div>
+
+      <div>
+        <strong>Category:</strong>{' '}
+        {post.categories.map((cat) => cat.name).join(', ')}
+      </div>
     </div>
   );
 };
