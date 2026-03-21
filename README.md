@@ -1,73 +1,203 @@
-# React + TypeScript + Vite
+# 🚀 DWS Blog — Frontend Technical Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was developed as part of the **DWS (Dentsu World Services) Frontend Recruitment Process**.
 
-Currently, two official plugins are available:
+The goal was to build a responsive, pixel-perfect blog using **React**, focusing on **code quality, architecture, and maintainability**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> ⏱️ Built within a 72-hour challenge window, prioritizing incremental delivery and clean code.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📌 Overview
 
-## Expanding the ESLint configuration
+This application is a **blog platform** that allows users to:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* View a list of posts
+* Access detailed information about each post
+* Navigate between pages seamlessly
+* Interact with dynamic data from a real API
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The project follows a **mobile-first approach** and emphasizes **scalability and clean architecture**.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🧠 Architecture & Design Decisions
+
+One of the main focuses of this project was **code organization and scalability**.
+
+The application is structured using a layered approach inspired by:
+
+* **Clean Architecture**
+* **Separation of Concerns**
+* **Domain-driven design (DDD - light approach)**
+
+### 🧩 Layers
+
+#### 📦 Domain
+
+Contains the core business logic and entities:
+
+* `Post`
+* `Author`
+* `Category`
+
+Also includes repository contracts:
+
+* `PostRepositories.ts`
+
+---
+
+#### ⚙️ Infrastructure
+
+Handles external communication:
+
+* API calls using **Axios**
+* HTTP abstraction via `httpClient.ts`
+* Repository implementations (`PostRepository.ts`)
+
+---
+
+#### 🧠 Application
+
+Responsible for state management and business orchestration:
+
+* React Context (`PostContext.tsx`)
+* Provider (`PostProvider.tsx`)
+* Custom hooks:
+
+  * `usePosts`
+  * `usePost`
+  * `usePostContext`
+
+---
+
+#### 🎨 Presentation
+
+UI layer:
+
+* Pages:
+
+  * `PostListPage`
+  * `PostDetailPage`
+* Components:
+
+  * `PostCard`
+
+---
+
+## 🔄 State Management
+
+State is managed using **React Context API + custom hooks**, ensuring:
+
+* Centralized state logic
+* Reusability
+* Clean separation from UI components
+
+---
+
+## 🌐 API Integration
+
+Data is fetched from the provided endpoints:
+
+* `/posts`
+* `/posts/{id}`
+* `/authors`
+* `/categories`
+
+All requests are handled through a reusable **HTTP client abstraction**.
+
+---
+
+## 📱 Features
+
+* 📄 Blog post listing page
+* 🔍 Post details page
+* 🔗 Client-side routing with React Router
+* ⚡ API integration with Axios
+* ♻️ Reusable components
+* 🧠 Custom hooks for logic separation
+* 📱 Responsive layout (mobile-first)
+* 🧪 Testing setup with Jest & Testing Library
+
+---
+
+## 🛠️ Tech Stack
+
+* **React 19**
+* **TypeScript**
+* **Vite**
+* **React Router**
+* **Axios**
+* **Jest + React Testing Library**
+* **ESLint**
+
+---
+
+## 📂 Project Structure
+
+```bash
+src/
+├── app/                  # App setup and routing
+├── application/          # State management & hooks
+├── domain/               # Business logic & entities
+├── infrastructure/       # API & external services
+├── presentation/         # UI (components & pages)
+├── styles/               # Global styles
+├── tests/                # Unit tests
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/2001mariana/dws-blog.git
+cd dws-blog
 ```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the project
+
+```bash
+npm run dev
+```
+
+---
+
+## 🎯 What This Project Demonstrates
+
+* Strong understanding of **React and hooks**
+* Ability to design **scalable frontend architecture**
+* Clean separation between **domain, logic, and UI**
+* Experience with **API abstraction and data flow**
+* Focus on **maintainability and readability**
+* Use of **TypeScript for type safety**
+
+---
+
+## 💭 Final Thoughts
+
+For this challenge, I chose to go beyond just implementing the UI.
+
+I focused on building a **scalable and maintainable architecture**, similar to what would be used in real-world production applications.
+
+This approach allows:
+
+* Easier feature expansion
+* Better testability
+* Clear separation of responsibilities
+
+I would be very happy to walk through my decisions and explain the architecture in detail.
+
+---
+
+## 🙌 Thank You
+
+Thank you for your time and for reviewing my project!
