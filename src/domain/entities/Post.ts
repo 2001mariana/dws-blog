@@ -12,4 +12,6 @@ export interface Post {
   categories: Category[]; 
   createdAt: string;
   updatedAt: string;
+  description: string;
+  imageUrl: string;
 }

@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { usePost } from '../../application/hooks/usePost';
+import "../styles/post-detail.css";
+import { Header } from '../components/Header';
 
 export const PostDetailPage = () => {
   const { id } = useParams();
@@ -10,8 +12,10 @@ export const PostDetailPage = () => {
   if (error) return <p>{error}</p>;
   if (!post) return <p>Post not found</p>;
 
-  return (
-    <div className="container">
+  return (  
+  <>
+    <Header />
+    <div className="container post-detail">
       <h1>{post.title}</h1>
 
       <img src={post.thumbnail_url} alt={post.title} />
@@ -27,5 +31,6 @@ export const PostDetailPage = () => {
         {post.categories.map((cat) => cat.name).join(', ')}
       </div>
     </div>
+    </>
   );
 };
