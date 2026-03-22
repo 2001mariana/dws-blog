@@ -1,0 +1,6 @@
+.header {
+  background: white;
+  padding: 16px 0;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
